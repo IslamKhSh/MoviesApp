@@ -54,14 +54,14 @@ android {
 
 dependencies {
 
-    implementation(libs.hilt.android)
+    implementation(libs.bundles.hilt)
     ksp(libs.hilt.android.compiler)
 
     implementation(libs.bundles.ktor)
 
-    implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-    debugImplementation(libs.androidx.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.tooling)
 
     implementation(libs.bundles.archComponents)
     implementation(libs.androidx.core.ktx)
