@@ -18,7 +18,6 @@ fun AppNavHost(
     route: String? = null,
     builder: NavGraphBuilder.() -> Unit,
 ) {
-
     NavHost(
         navController = navController,
         startDestination = startDestination.fullRoute,

@@ -9,10 +9,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
-fun NavigationEffects(
-    navigationChannel: Channel<NavigationIntent>,
-    navHostController: NavHostController
-) {
+fun NavigationEffects(navigationChannel: Channel<NavigationIntent>, navHostController: NavHostController) {
     val activity = (LocalContext.current as? Activity)
     LaunchedEffect(activity, navHostController, navigationChannel) {
         navigationChannel.receiveAsFlow().collect { intent ->

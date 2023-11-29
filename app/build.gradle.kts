@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
@@ -43,13 +45,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_7
-        targetCompatibility = JavaVersion.VERSION_1_7
+        sourceCompatibility = JavaVersion.VERSION_1_9
+        targetCompatibility = JavaVersion.VERSION_1_9
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = JavaVersion.VERSION_1_9.toString()
     }
+
     buildFeatures.compose = true
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.4"
+    }
 }
 
 dependencies {

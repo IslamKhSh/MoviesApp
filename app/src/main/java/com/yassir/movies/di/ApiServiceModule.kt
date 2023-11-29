@@ -11,7 +11,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class ApiServiceModule {
-
     @Singleton
     @Binds
     abstract fun bindApiService(apiService: ApiServiceImpl): ApiService

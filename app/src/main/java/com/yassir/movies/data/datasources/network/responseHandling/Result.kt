@@ -5,7 +5,6 @@ package com.yassir.movies.data.datasources.network.responseHandling
  * @param <T>
  */
 sealed class Result<out R> {
-
     data class Success<out T>(val data: T) : Result<T>()
     data class Error(val errorType: ErrorType, val errorMessage: String? = null) : Result<Nothing>()
 
@@ -17,8 +16,7 @@ sealed class Result<out R> {
     }
 }
 
-sealed class ErrorType(val msg : String? = null) {
-
+sealed class ErrorType(val msg: String? = null) {
     data object UnAuthorized : ErrorType() // status code 401
     class NotFound(msg: String?) : ErrorType(msg) // status code 404
     class ServerError(msg: String?) : ErrorType(msg) // status code 500

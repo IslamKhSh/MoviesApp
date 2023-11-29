@@ -49,11 +49,12 @@ object KtorModule {
         }
 
         install(Logging) {
-            logger = object : Logger {
-                override fun log(message: String) {
-                    Timber.tag("Ktor =>").v(message)
+            logger =
+                object : Logger {
+                    override fun log(message: String) {
+                        Timber.tag("Ktor =>").v(message)
+                    }
                 }
-            }
             level = LogLevel.ALL
         }
 

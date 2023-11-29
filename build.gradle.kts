@@ -15,6 +15,10 @@ tasks.withType<Detekt> { jvmTarget = "1.8" }
 
 // run detekt over all modules and get one report for all modules
 val detektAll by tasks.registering(Detekt::class) {
+    dependencies {
+        detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${libs.plugins.detekt.get().version}")
+    }
+
     description = "Run Detekt for all projects"
 
     parallel = true
@@ -23,5 +27,5 @@ val detektAll by tasks.registering(Detekt::class) {
     include("**/*.kt", "**/*.kts")
     exclude("**/resources/**", "**/build/**")
     config.setFrom(files("$rootDir/detekt-config.yml"))
-    buildUponDefaultConfig = false
+    buildUponDefaultConfig = true
 }

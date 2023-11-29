@@ -8,18 +8,13 @@ import com.yassir.movies.ui.navigation.Destination
 import com.yassir.movies.ui.navigation.composable
 
 @Composable
-fun NavigationGraph(
-    modifier: Modifier = Modifier,
-    navController: NavHostController,
-) {
+fun NavigationGraph(modifier: Modifier = Modifier, navController: NavHostController,) {
     AppNavHost(
         navController = navController,
         startDestination = Destination.MoviesList,
         modifier = modifier
     ) {
-
         composable(Destination.MoviesList) {
-
         }
     }
 }

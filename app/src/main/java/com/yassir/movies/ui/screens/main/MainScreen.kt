@@ -10,7 +10,6 @@ import com.yassir.movies.ui.navigation.AppNavigatorImpl
 import com.yassir.movies.ui.navigation.NavigationEffects
 import com.yassir.movies.ui.theme.MoviesTheme
 
-
 val LocalAppNavigator = staticCompositionLocalOf<AppNavigator> { AppNavigatorImpl }
 val LocalNavController = staticCompositionLocalOf<NavHostController> { error("No LocalNavController provided") }
 
@@ -29,7 +28,6 @@ fun MainScreenView() {
             LocalAppNavigator provides AppNavigatorImpl,
             LocalNavController provides navController
         ) {
-
         }
     }
 }

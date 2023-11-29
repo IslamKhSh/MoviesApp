@@ -5,6 +5,4 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ApiServiceImpl @Inject constructor(private val ktor: HttpClient) : ApiService {
-
-}
+class ApiServiceImpl @Inject constructor(private val ktor: HttpClient) : ApiService

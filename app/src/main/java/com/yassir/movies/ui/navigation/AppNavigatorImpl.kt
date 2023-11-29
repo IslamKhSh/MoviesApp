@@ -4,10 +4,11 @@ import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.channels.Channel
 
 object AppNavigatorImpl : AppNavigator {
-    override val navigationChannel = Channel<NavigationIntent>(
-        capacity = Int.MAX_VALUE,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST,
-    )
+    override val navigationChannel =
+        Channel<NavigationIntent>(
+            capacity = Int.MAX_VALUE,
+            onBufferOverflow = BufferOverflow.DROP_OLDEST,
+        )
 
     override suspend fun navigateBack(route: String?, inclusive: Boolean) {
         navigationChannel.send(
