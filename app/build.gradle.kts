@@ -68,6 +68,8 @@ dependencies {
 
     implementation(libs.coil.compose)
 
+    implementation(libs.timber)
+
     // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.bundles.unitTest)
     testImplementation(platform(libs.junit))
