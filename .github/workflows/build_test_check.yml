@@ -1,0 +1,59 @@
+name: Android Build, Test, and Check
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    types: [ opened, synchronize ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+
+      - name: Build Project
+        run: ./gradlew assembleDebug --no-build-cache
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+
+      - name: unitTest
+        run: ./gradlew test
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: unit-test-report
+          path: ./**/build/reports/tests/
+
+  detekt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+
+      - name: detekt
+        run: ./gradlew detektAll
