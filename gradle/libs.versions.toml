@@ -17,6 +17,7 @@ ksp = "1.9.0-1.0.12"
 ktor = "2.3.6"
 junit5 = "5.9.2"
 kluent = "1.72"
+paging = "3.2.1"
 
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
@@ -48,6 +49,8 @@ mockk = "io.mockk:mockk:1.13.4"
 kluent-core = { module = "org.amshove.kluent:kluent", version.ref = "kluent" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 coil-compose = "io.coil-kt:coil-compose:2.4.0"
+timber = "com.jakewharton.timber:timber:5.0.1"
+paging = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 
 [bundles]
 compose = ["activity-compose", "compose-ui", "compose-ui-tooling-preview", "compose-material3", "compose-material"]
