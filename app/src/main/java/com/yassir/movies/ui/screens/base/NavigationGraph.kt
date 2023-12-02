@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import com.yassir.movies.ui.navigation.AppNavHost
 import com.yassir.movies.ui.navigation.Destination
 import com.yassir.movies.ui.navigation.composable
+import com.yassir.movies.ui.screens.movies.MoviesListScreen
 
 @Composable
 fun NavigationGraph(modifier: Modifier = Modifier, navController: NavHostController,) {
@@ -15,6 +16,7 @@ fun NavigationGraph(modifier: Modifier = Modifier, navController: NavHostControl
         modifier = modifier
     ) {
         composable(Destination.MoviesList) {
+            MoviesListScreen()
         }
     }
 }

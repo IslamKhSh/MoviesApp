@@ -1,4 +1,4 @@
-package com.yassir.movies.data.datasources.network.responseHandling
+package com.yassir.movies.data.models
 
 /**
  * A generic class that holds a value with its loading status.
@@ -16,15 +16,15 @@ sealed class Result<out R> {
     }
 }
 
-sealed class ErrorType(val msg: String? = null) {
+sealed class ErrorType {
     data object UnAuthorized : ErrorType() // status code 401
-    class NotFound(msg: String?) : ErrorType(msg) // status code 404
-    class ServerError(msg: String?) : ErrorType(msg) // status code 500
+    data object NotFound : ErrorType() // status code 404
+    data object ServerError : ErrorType() // status code 500
 
     data object InternetConnection : ErrorType() // IOException
     data object TimeOut : ErrorType() // SocketTimeoutException
 
-    class Other(msg: String? = null) : ErrorType(msg)
+    data object Other : ErrorType()
 }
 
 /**

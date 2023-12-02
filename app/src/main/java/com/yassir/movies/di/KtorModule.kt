@@ -16,7 +16,6 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.request.accept
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-import io.ktor.http.parameters
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import timber.log.Timber
@@ -30,40 +29,41 @@ object KtorModule {
     @Provides
     @Singleton
     fun getKtorClient() = HttpClient(Android) {
-        install(ContentNegotiation) {
-            json(
-                Json {
-                    prettyPrint = true
-                    isLenient = true
-                    useAlternativeNames = true
-                    ignoreUnknownKeys = true
-                    encodeDefaults = false
-                }
-            )
-        }
-
-        install(HttpTimeout) {
-            requestTimeoutMillis = NETWORK_TIME_OUT
-            connectTimeoutMillis = NETWORK_TIME_OUT
-            socketTimeoutMillis = NETWORK_TIME_OUT
-        }
-
-        install(Logging) {
-            logger =
-                object : Logger {
-                    override fun log(message: String) {
-                        Timber.tag("Ktor =>").v(message)
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                        useAlternativeNames = true
+                        ignoreUnknownKeys = true
+                        encodeDefaults = false
                     }
-                }
-            level = LogLevel.ALL
-        }
+                )
+            }
 
-        defaultRequest {
-            contentType(ContentType.Application.Json)
-            accept(ContentType.Application.Json)
-            parameters {
-                append("api_key", BuildConfig.API_KEY)
+            install(HttpTimeout) {
+                requestTimeoutMillis = NETWORK_TIME_OUT
+                connectTimeoutMillis = NETWORK_TIME_OUT
+                socketTimeoutMillis = NETWORK_TIME_OUT
+            }
+
+            install(Logging) {
+                logger =
+                    object : Logger {
+                        override fun log(message: String) {
+                            Timber.tag("Ktor =>").v(message)
+                        }
+                    }
+                level = LogLevel.ALL
+            }
+
+            defaultRequest {
+                url(BuildConfig.BASE_URL)
+                url {
+                    parameters.append("api_key", BuildConfig.API_KEY)
+                }
+                contentType(ContentType.Application.Json)
+                accept(ContentType.Application.Json)
             }
         }
-    }
 }
