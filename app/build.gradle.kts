@@ -20,18 +20,17 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        vectorDrawables.useSupportLibrary = true
 
         // you must add your key in local.properties file `API_KEY=......`
         val apiKey = "${gradleLocalProperties(rootDir)["API_KEY"]}"
 
         // init this field in defaultConfig as it doesn't change from build type to another
         buildConfigField("String", "API_KEY", "\"$apiKey\"")
-        buildConfigField("String", "BASE_URL", "\"https://developers.themoviedb.org/3/\"")
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         buildConfigField("String", "BASE_IMG_URL", "\"https://image.tmdb.org/t/p/w500/\"")
     }
 
@@ -54,14 +53,20 @@ android {
 
     buildFeatures.compose = true
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.4"
+        kotlinCompilerExtensionVersion = "1.5.5"
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
 
     implementation(libs.bundles.hilt)
-    ksp(libs.hilt.android.compiler)
+    ksp(libs.bundles.hilt.compiler)
 
     implementation(libs.bundles.ktor)
 
@@ -71,12 +76,11 @@ dependencies {
 
     implementation(libs.bundles.archComponents)
     implementation(libs.androidx.core.ktx)
-
     implementation(libs.coil.compose)
+    implementation(libs.bundles.paging)
 
     implementation(libs.timber)
 
-    // Local tests: jUnit, coroutines, Android runner
     testImplementation(libs.bundles.unitTest)
     testImplementation(platform(libs.junit))
 }

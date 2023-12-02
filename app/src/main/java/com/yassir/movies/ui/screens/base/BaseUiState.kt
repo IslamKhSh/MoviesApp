@@ -1,6 +1,6 @@
 package com.yassir.movies.ui.screens.base
 
-import com.yassir.movies.data.datasources.network.responseHandling.ErrorType
+import com.yassir.movies.data.models.ErrorType
 
 sealed class BaseUiState<out T> {
     data object Loading : BaseUiState<Nothing>()

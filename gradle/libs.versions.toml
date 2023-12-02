@@ -1,10 +1,10 @@
 [versions]
-androidGradlePlugin = "8.1.4"
+androidGradlePlugin = "8.2.0"
 androidxCore = "1.12.0"
 androidxLifecycle = "2.6.2"
 androidxActivity = "1.8.1"
 androidxComposeBom = "2023.10.01"
-androidxComposeCompiler = "1.5.4"
+androidxComposeCompiler = "1.5.5"
 androidxNavigation = "2.7.5"
 androidxTest = "1.5.0"
 androidxTestExt = "1.1.5"
@@ -13,7 +13,7 @@ coroutines = "1.7.1"
 hilt = "2.48"
 hiltNavCompose = "1.1.0"
 kotlin = "1.9.20"
-ksp = "1.9.0-1.0.12"
+ksp = "1.9.20-1.0.14"
 ktor = "2.3.6"
 junit5 = "5.9.2"
 kluent = "1.72"
@@ -36,6 +36,7 @@ lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-com
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidxNavigation" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt-compiler = "com.google.dagger:hilt-compiler:2.48.1"
 hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 ktor-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
@@ -45,19 +46,24 @@ ktor-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation",
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 junit = { module = "org.junit:junit-bom", version.ref = "junit5" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit5" }
-mockk = "io.mockk:mockk:1.13.4"
+mockk = "io.mockk:mockk:1.13.8"
 kluent-core = { module = "org.amshove.kluent:kluent", version.ref = "kluent" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-coil-compose = "io.coil-kt:coil-compose:2.4.0"
+coil-compose = "io.coil-kt:coil-compose:2.5.0"
 timber = "com.jakewharton.timber:timber:5.0.1"
 paging = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
+paging-test = { module = "androidx.paging:paging-testing", version.ref = "paging" }
+turbine = "app.cash.turbine:turbine:1.0.0"
 
 [bundles]
 compose = ["activity-compose", "compose-ui", "compose-ui-tooling-preview", "compose-material3", "compose-material"]
 archComponents = ["viewmodel-compose", "navigation-compose", "lifecycle-runtime-ktx", "lifecycle-runtime-compose"]
 hilt = ["hilt-navigation-compose", "hilt-android"]
+hilt-compiler = ["hilt-android-compiler", "hilt-compiler"]
 ktor = ["ktor-android", "ktor-serialization", "ktor-kotlinx-serialization", "ktor-content-negotiation", "ktor-logging"]
-unitTest = ["kotlinx-coroutines-test", "junit-jupiter", "kluent-core", "kotlin-test-junit", "mockk"]
+paging = ["paging", "paging-compose"]
+unitTest = ["kotlinx-coroutines-test", "junit-jupiter", "kluent-core", "kotlin-test-junit", "mockk", "paging-test", "turbine"]
 
 
 [plugins]

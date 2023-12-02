@@ -1,4 +1,4 @@
-package com.yassir.movies.data.datasources.network.responseHandling
+package com.yassir.movies.data.models
 
 import androidx.annotation.Keep
 import kotlinx.serialization.SerialName
