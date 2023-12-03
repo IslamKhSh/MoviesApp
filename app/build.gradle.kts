@@ -1,7 +1,5 @@
 @file:Suppress("MagicNumber")
 
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
-
 plugins {
     id(libs.plugins.ksp.get().pluginId)
     id(libs.plugins.android.application.get().pluginId)
@@ -25,11 +23,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
-        // you must add your key in local.properties file `API_KEY=......`
-        val apiKey = "${gradleLocalProperties(rootDir)["API_KEY"]}"
-
         // init this field in defaultConfig as it doesn't change from build type to another
-        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        buildConfigField("String", "API_KEY", "\"c9856d0cb57c3f14bf75bdc6c063b8f3\"")
         buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
         buildConfigField("String", "BASE_IMG_URL", "\"https://image.tmdb.org/t/p/w500/\"")
     }
