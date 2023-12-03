@@ -29,41 +29,41 @@ object KtorModule {
     @Provides
     @Singleton
     fun getKtorClient() = HttpClient(Android) {
-            install(ContentNegotiation) {
-                json(
-                    Json {
-                        prettyPrint = true
-                        isLenient = true
-                        useAlternativeNames = true
-                        ignoreUnknownKeys = true
-                        encodeDefaults = false
-                    }
-                )
-            }
-
-            install(HttpTimeout) {
-                requestTimeoutMillis = NETWORK_TIME_OUT
-                connectTimeoutMillis = NETWORK_TIME_OUT
-                socketTimeoutMillis = NETWORK_TIME_OUT
-            }
-
-            install(Logging) {
-                logger =
-                    object : Logger {
-                        override fun log(message: String) {
-                            Timber.tag("Ktor =>").v(message)
-                        }
-                    }
-                level = LogLevel.ALL
-            }
-
-            defaultRequest {
-                url(BuildConfig.BASE_URL)
-                url {
-                    parameters.append("api_key", BuildConfig.API_KEY)
+        install(ContentNegotiation) {
+            json(
+                Json {
+                    prettyPrint = true
+                    isLenient = true
+                    useAlternativeNames = true
+                    ignoreUnknownKeys = true
+                    encodeDefaults = false
                 }
-                contentType(ContentType.Application.Json)
-                accept(ContentType.Application.Json)
-            }
+            )
         }
+
+        install(HttpTimeout) {
+            requestTimeoutMillis = NETWORK_TIME_OUT
+            connectTimeoutMillis = NETWORK_TIME_OUT
+            socketTimeoutMillis = NETWORK_TIME_OUT
+        }
+
+        install(Logging) {
+            logger =
+                object : Logger {
+                    override fun log(message: String) {
+                        Timber.tag("Ktor =>").v(message)
+                    }
+                }
+            level = LogLevel.ALL
+        }
+
+        defaultRequest {
+            url(BuildConfig.BASE_URL)
+            url {
+                parameters.append("api_key", BuildConfig.API_KEY)
+            }
+            contentType(ContentType.Application.Json)
+            accept(ContentType.Application.Json)
+        }
+    }
 }

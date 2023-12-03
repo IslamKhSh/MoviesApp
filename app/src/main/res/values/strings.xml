@@ -2,4 +2,8 @@
     <string name="app_name">Movies</string>
 
     <string name="strRetry">Retry</string>
+    <string name="internet_connection_error">No internet connection… please connect to the internet and try again</string>
+    <string name="something_wrong">Something wrong… please try again later</string>
+    <string name="ok">OK</string>
+
 </resources>
