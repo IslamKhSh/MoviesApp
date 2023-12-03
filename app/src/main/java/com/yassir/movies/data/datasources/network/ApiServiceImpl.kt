@@ -12,9 +12,9 @@ import javax.inject.Singleton
 @Singleton
 class ApiServiceImpl @Inject constructor(private val ktor: HttpClient) : ApiService {
     override suspend fun getMoviesList(pageNumber: Int): RemoteMovies = ktor.get("discover/movie") {
-            parameter("include_adult", false)
-            parameter("page", pageNumber)
-        }.bodyOrError()
+        parameter("include_adult", false)
+        parameter("page", pageNumber)
+    }.bodyOrError()
 
-    override suspend fun getMovieDetails(movieId: Long): RemoteMovieDetails = ktor.get("movie/$movieId").bodyOrError()
+    override suspend fun getMovieDetails(movieId: Int): RemoteMovieDetails = ktor.get("movie/$movieId").bodyOrError()
 }

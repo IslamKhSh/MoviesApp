@@ -19,7 +19,6 @@ import org.junit.jupiter.api.extension.ExtensionContext
  */
 @ExperimentalCoroutinesApi
 class CoroutinesTestDispatcherExtension : BeforeEachCallback, AfterEachCallback {
-
     override fun beforeEach(context: ExtensionContext?) {
         Dispatchers.setMain(StandardTestDispatcher())
     }

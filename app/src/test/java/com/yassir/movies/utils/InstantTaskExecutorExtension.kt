@@ -17,7 +17,6 @@ import org.junit.jupiter.api.extension.ExtensionContext
 // See https://issuetracker.google.com/u/0/issues/79189568
 @SuppressLint("RestrictedApi")
 class InstantTaskExecutorExtension : BeforeEachCallback, AfterEachCallback {
-
     override fun beforeEach(context: ExtensionContext) {
         ArchTaskExecutor.getInstance().setDelegate(
             object : TaskExecutor() {

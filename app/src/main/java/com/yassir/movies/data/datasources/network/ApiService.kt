@@ -5,5 +5,5 @@ import com.yassir.movies.data.models.RemoteMovies
 
 interface ApiService {
     suspend fun getMoviesList(pageNumber: Int): RemoteMovies
-    suspend fun getMovieDetails(movieId: Long): RemoteMovieDetails
+    suspend fun getMovieDetails(movieId: Int): RemoteMovieDetails
 }

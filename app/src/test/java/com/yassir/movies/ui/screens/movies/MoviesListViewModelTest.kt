@@ -1,11 +1,6 @@
 package com.yassir.movies.ui.screens.movies
 
-import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
-import androidx.paging.map
-import androidx.paging.testing.asSnapshot
-import app.cash.turbine.test
-import app.cash.turbine.turbineScope
 import com.yassir.movies.domain.usecases.GetMoviesListUseCase
 import com.yassir.movies.entities.Movie
 import com.yassir.movies.utils.CoroutinesTestDispatcherExtension
@@ -15,13 +10,8 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
-import org.amshove.kluent.`should be`
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -33,7 +23,6 @@ import org.junit.jupiter.api.extension.ExtendWith
     MockKExtension::class
 )
 class MoviesListViewModelTest {
-
     @MockK
     private lateinit var getMoviesUseCase: GetMoviesListUseCase
 

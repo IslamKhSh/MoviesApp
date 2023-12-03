@@ -29,6 +29,8 @@ import com.yassir.movies.entities.Movie
 import com.yassir.movies.ui.components.ErrorMessage
 import com.yassir.movies.ui.components.LoadingNextPageItem
 import com.yassir.movies.ui.components.PageLoader
+import com.yassir.movies.ui.navigation.Destination
+import com.yassir.movies.ui.screens.main.LocalAppNavigator
 import com.yassir.movies.utils.appImageLoader
 import com.yassir.movies.utils.toImagesUrl
 
@@ -79,6 +81,8 @@ fun MoviesListScreen(viewModel: MoviesListViewModel = hiltViewModel()) {
 
 @Composable
 fun MovieItem(movie: Movie) {
+    val appNavigator = LocalAppNavigator.current
+
     Row(
         modifier =
         Modifier
@@ -87,21 +91,22 @@ fun MovieItem(movie: Movie) {
             .padding(bottom = 8.dp)
             .background(color = Color.LightGray, shape = RoundedCornerShape(4.dp))
             .padding(6.dp)
-            .clickable {
-            }
+            .clickable { appNavigator.tryNavigateTo(Destination.MovieDetails(movie.id)) }
     ) {
         SubcomposeAsyncImage(
             model = movie.image.toImagesUrl(),
             contentDescription = null,
             imageLoader = appImageLoader(),
             contentScale = ContentScale.FillHeight,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxHeight()
                 .clip(RoundedCornerShape(6.dp))
         )
 
         Column(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .padding(start = 6.dp)
                 .fillMaxSize()
         ) {
