@@ -25,6 +25,7 @@ Android Movie app using [TMDB Movies Api](https://developer.themoviedb.org/refer
     - [Detekt](https://github.com/detekt/detekt).
 - Other Libs and tools:
     - [Coil](https://github.com/coil-kt/coil) for image loading.
+    - Material 3.
 - CI/CD: [Github Actions](.github/workflows)
 
 ## Screenshots
